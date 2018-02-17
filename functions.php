@@ -1,6 +1,7 @@
 <?php
 if (is_admin()) {
   add_theme_support('menus');
+  define('DISALLOW_FILE_EDIT', true);
 } else {
   // Cleanup the stuff that's not needed.
   remove_action('wp_print_styles', 'print_emoji_styles');
