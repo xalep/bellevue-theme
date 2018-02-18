@@ -24,8 +24,9 @@
     <?php
       $languages = pll_the_languages(array('hide_current' => 1, raw => 1));
       foreach($languages as $lang => $data) {
-        printf('<a href="%1$s"><img src="%2$s" alt="%3$s" title="%3$s"></a>',
-          esc_url($data['url']), esc_url($data['flag']), esc_attr($data['name']));
+        printf('<a href="%1$s"><img class="flag" src="%2$s/images/%3$s.svg" alt="%4$s" title="%4$s"></a>',
+          esc_url($data['url']), get_template_directory_uri(),
+          $data['slug'], esc_attr($data['name']));
       }
     ?>
   </aside>
