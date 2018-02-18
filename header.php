@@ -10,7 +10,7 @@
   <h1><a href='<?php echo esc_url( pll_home_url() ); ?>'><img
     src='<?php echo esc_url(wp_get_attachment_image_src(get_theme_mod('custom_logo'), 'full' )[0]); ?>'
     alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'></a></h1>
-	<?php wp_nav_menu(array('container' => 'nav')); ?>
+  <?php wp_nav_menu(array('container' => 'nav')); ?>
   <aside>
     <a href="https://www.facebook.com/BellevueFarmStockholm"><i
       title="<?php echo esc_attr(pll__('facebook'))?>"
