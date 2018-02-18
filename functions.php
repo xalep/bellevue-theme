@@ -35,6 +35,7 @@ if (is_admin()) {
 
 add_theme_support('html5', array('gallery'));
 add_theme_support('custom-logo');
+add_theme_support('title-tag');
 register_nav_menus( array(
   'primary' => esc_html__( 'Primary Menu', 'bellevue' ),
 ) );
