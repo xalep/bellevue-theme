@@ -2,6 +2,10 @@
 if (is_admin()) {
   add_theme_support('menus');
   define('DISALLOW_FILE_EDIT', true);
+
+  foreach(array('facebook', 'instagram', 'email') as $s) {
+    pll_register_string('bellevue', $s);
+  }
 } else {
   // Remove the stuff that's not needed.
   remove_action('wp_print_styles', 'print_emoji_styles');

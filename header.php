@@ -12,13 +12,20 @@
     alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'></a></h1>
 	<?php wp_nav_menu(array('container' => 'nav')); ?>
   <aside>
-    <a href="https://www.facebook.com/BellevueFarmStockholm"><i class="fab fa-facebook"></i></a>
-    <a href="https://www.instagram.com/bellevuefarm_sthlm/"><i class="fab fa-instagram"></i></a>
-    <a href="mailto:info@bellevuefarm.se"><i class="far fa-envelope"></i></a>
+    <a href="https://www.facebook.com/BellevueFarmStockholm"><i
+      title="<?php echo esc_attr(pll__('facebook'))?>"
+      class="fab fa-facebook"></i></a>
+    <a href="https://www.instagram.com/bellevuefarm_sthlm/"><i
+      title="<?php echo esc_attr(pll__('instagram'))?>"
+      class="fab fa-instagram"></i></a>
+    <a href="mailto:info@bellevuefarm.se"><i
+      title="<?php echo esc_attr(pll__('email'))?>"
+      class="far fa-envelope"></i></a>
     <?php
-      $languages = pll_the_languages(array('hide_current' => 1, 'show_flags' => 1, raw => 1));
+      $languages = pll_the_languages(array('hide_current' => 1, raw => 1));
       foreach($languages as $lang => $data) {
-        printf('<a href="%s">%s</a>', esc_url($data['url']), $data['flag']);
+        printf('<a href="%1$s"><img src="%2$s" alt="%3$s" title="%3$s"></a>',
+          esc_url($data['url']), esc_url($data['flag']), esc_attr($data['name']));
       }
     ?>
   </aside>
