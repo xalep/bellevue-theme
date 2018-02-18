@@ -51,6 +51,12 @@ header h1 img {
   width: 100%;
 }
 
+@media (max-width: 50em) {
+  header h1 {
+    max-width: 30vw;
+  }
+}
+
 header nav {
   flex-grow: 1;
 }
@@ -130,6 +136,7 @@ main h2, main h3 {
 .gallery {
   display: flex;
   flex-flow: row wrap;
+  line-height: 0;
 }
 
 .gallery figure {
