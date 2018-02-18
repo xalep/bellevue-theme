@@ -3,6 +3,18 @@ if (is_admin()) {
   add_theme_support('menus');
   define('DISALLOW_FILE_EDIT', true);
 
+  // Allow editors to edit menus
+  if(current_user_can('editor')) {
+    $editor_role = get_role('editor');
+    if(!$editor_role->has_cap('edit_theme_options')) {
+      $editor_role->add_cap('edit_theme_options');
+    }
+    function hide_theme_selection_menu() {
+      remove_submenu_page( 'themes.php', 'themes.php' );
+    }
+    add_action('admin_head', 'hide_theme_selection_menu');
+  }
+
   foreach(array('facebook', 'instagram', 'email') as $s) {
     pll_register_string('bellevue', $s);
   }
