@@ -123,8 +123,6 @@ header aside a {
 
 main h2 {
   font-size: 2em;
-  font-weight: 400;
-  letter-spacing: 0.1em;
 }
 
 @media (max-width: 50em) {
@@ -135,6 +133,7 @@ main h2 {
 
 main h2, main h3 {
   font-family: "Roboto Slab", serif;
+  font-weight: 400;
   letter-spacing: 0.05em;
 }
 
