@@ -36,7 +36,7 @@ if (is_admin()) {
 
   // Add stylesheets.
   wp_enqueue_style('normalize', 'https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css', array(), null);
-  wp_enqueue_style('gfonts', 'https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto+Slab:300,400|Roboto:400,700', array(), null);
+  wp_enqueue_style('gfonts', 'https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto+Slab:300,400', array(), null);
   wp_enqueue_style('style', get_stylesheet_uri(), array(), wp_get_theme()->get('Version'));
   wp_enqueue_style('lightbox', 'https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css', array(), null);
 
