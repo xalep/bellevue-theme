@@ -1,6 +1,27 @@
 <?php
 if (is_admin()) {
+  configure_admin_ui();
+} else {
+  add_filter('show_admin_bar', '__return_false');
+  add_action('init', 'head_cleanup');
+  // Enqueue scripts & styles
+  // https://codex.wordpress.org/Plugin_API/Action_Reference/wp_enqueue_scripts
+  // “Despite the name, it is used for enqueuing both scripts and styles.”
+  add_action('wp_enqueue_scripts', 'scripts_and_styles');
+}
+add_action('after_setup_theme', 'configure_theme_features');
+
+function configure_theme_features() {
   add_theme_support('menus');
+  add_theme_support('html5', array('gallery'));
+  add_theme_support('custom-logo');
+  add_theme_support('title-tag');
+  register_nav_menus( array(
+    'primary' => esc_html__('Primary Menu', 'bellevue'),
+  ));
+}
+
+function configure_admin_ui() {
   define('DISALLOW_FILE_EDIT', true);
 
   // Allow editors to edit menus
@@ -15,11 +36,15 @@ if (is_admin()) {
     add_action('admin_head', 'hide_theme_selection_menu');
   }
 
+  // Make strings available for translation
+  // https://polylang.pro/doc/function-reference/#pll_register_string
   foreach(array('facebook', 'instagram', 'email') as $s) {
     pll_register_string('bellevue', $s);
   }
-} else {
-  // Remove the stuff that's not needed.
+}
+
+// Remove the stuff that's not needed.
+function head_cleanup() {
   remove_action('wp_print_styles', 'print_emoji_styles');
   remove_action('wp_head', 'wp_generator');
   remove_action('wp_head', 'rsd_link');
@@ -31,9 +56,9 @@ if (is_admin()) {
   remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
   remove_action('wp_head', 'wp_oembed_add_discovery_links');
   remove_action('wp_head', 'wp_oembed_add_host_js');
+}
 
-  add_filter('show_admin_bar', '__return_false');
-
+function scripts_and_styles() {
   // Add stylesheets.
   wp_enqueue_style('normalize', 'https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css', array(), null);
   wp_enqueue_style('gfonts', 'https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto+Slab:300,400', array(), null);
@@ -44,12 +69,4 @@ if (is_admin()) {
   wp_enqueue_script('lightbox', 'https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js', array(), null);
   wp_enqueue_script('fontawesome', 'https://use.fontawesome.com/releases/v5.0.6/js/all.js', array(), null);
 }
-
-add_theme_support('html5', array('gallery'));
-add_theme_support('custom-logo');
-add_theme_support('title-tag');
-register_nav_menus( array(
-  'primary' => esc_html__( 'Primary Menu', 'bellevue' ),
-) );
-
 ?>
