@@ -51,9 +51,9 @@ header h1 img {
   width: 100%;
 }
 
-@media (max-width: 50em) {
+@media (max-width: 560px) {
   header h1 {
-    max-width: 30vw;
+    max-width: 25vw;
   }
 }
 
