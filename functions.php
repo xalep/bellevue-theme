@@ -8,6 +8,7 @@ if (is_admin()) {
   // https://codex.wordpress.org/Plugin_API/Action_Reference/wp_enqueue_scripts
   // “Despite the name, it is used for enqueuing both scripts and styles.”
   add_action('wp_enqueue_scripts', 'scripts_and_styles');
+  add_filter('script_loader_tag', 'add_asyncdefer_attribute', 10, 2);
 }
 add_action('after_setup_theme', 'configure_theme_features');
 
@@ -66,7 +67,16 @@ function scripts_and_styles() {
   wp_enqueue_style('lightbox', 'https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css', array(), null);
 
   // Add scripts.
-  wp_enqueue_script('lightbox', 'https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js', array(), null);
-  wp_enqueue_script('fontawesome', 'https://use.fontawesome.com/releases/v5.0.6/js/all.js', array(), null);
+  wp_enqueue_script('lightbox-defer', 'https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js', array(), null);
+  wp_enqueue_script('fontawesome-defer', 'https://use.fontawesome.com/releases/v5.0.6/js/all.js', array(), null);
 }
+
+function add_asyncdefer_attribute($tag, $handle) {
+  if (strpos($handle, 'defer') !== false) {
+    return str_replace( '<script ', '<script defer ', $tag );
+  } else {
+    return $tag;
+  }
+}
+
 ?>
