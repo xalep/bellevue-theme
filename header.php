@@ -13,15 +13,22 @@
     alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"></a></h1>
   <?php wp_nav_menu(array('container' => 'nav')); ?>
   <aside>
-    <a href="https://www.facebook.com/BellevueFarmStockholm"><i
+    <!-- SVG Icons from https://github.com/FortAwesome/Font-Awesome -->
+    <a href="https://www.facebook.com/BellevueFarmStockholm"><img
+      class="svg svg875"
+      alt="<?php echo esc_attr(pll__('facebook'))?>"
       title="<?php echo esc_attr(pll__('facebook'))?>"
-      class="fab fa-facebook"></i></a>
-    <a href="https://www.instagram.com/bellevuefarm_sthlm/"><i
+      src="<?php echo get_template_directory_uri(); ?>/images/facebook.svg"/></a>
+    <a href="https://www.instagram.com/bellevuefarm_sthlm/"><img
+      class="svg svg875"
+      alt="<?php echo esc_attr(pll__('instagram'))?>"
       title="<?php echo esc_attr(pll__('instagram'))?>"
-      class="fab fa-instagram"></i></a>
-    <a href="mailto:info@bellevuefarm.se"><i
+      src="<?php echo get_template_directory_uri(); ?>/images/instagram.svg"/></a>
+    <a href="mailto:info@bellevuefarm.se"><img
+      class="svg svg1000"
+      alt="<?php echo esc_attr(pll__('email'))?>"
       title="<?php echo esc_attr(pll__('email'))?>"
-      class="far fa-envelope"></i></a>
+      src="<?php echo get_template_directory_uri(); ?>/images/envelope.svg"/></a>
     <?php
       $languages = pll_the_languages(array('hide_current' => 1, raw => 1));
       foreach($languages as $lang => $data) {

@@ -112,8 +112,18 @@ header nav a:hover::after {
 
 header aside a {
   display: block;
-  color: #888;
   text-align: center;
+}
+
+.svg {
+  height: 1em;
+  vertical-align: -.125em;
+  width: 1em;
+  fill: currentColor;
+}
+
+.svg.svg875 {
+  width: 0.875em;
 }
 
 .flag {

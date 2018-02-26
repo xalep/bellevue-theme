@@ -68,7 +68,6 @@ function scripts_and_styles() {
 
   // Add scripts.
   wp_enqueue_script('lightbox-defer', 'https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js', array(), null);
-  wp_enqueue_script('fontawesome-defer', 'https://use.fontawesome.com/releases/v5.0.6/js/all.js', array(), null);
 }
 
 function add_asyncdefer_attribute($tag, $handle) {
