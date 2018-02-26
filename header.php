@@ -9,7 +9,9 @@
 <header>
 
   <h1><a href="<?php echo esc_url( pll_home_url() ); ?>"><img
-    src="<?php echo esc_url(wp_get_attachment_image_src(get_theme_mod('custom_logo'), 'full' )[0]); ?>"
+    src="<?php echo get_template_directory_uri(); ?>/images/logo-140.png"
+    srcset="<?php echo get_template_directory_uri(); ?>/images/logo-140.png,
+    <?php echo get_template_directory_uri(); ?>/images/logo-280.png 2x"
     alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"></a></h1>
   <?php wp_nav_menu(array('container' => 'nav')); ?>
   <aside>
